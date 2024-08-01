@@ -34,6 +34,9 @@ jobs:
           echo "Pushing image to ECR..."
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+          IMAGES_TO_DELETE=$( aws ecr list-images --region $ECR_REGION --repository-name $ECR_REPOSITORY --filter "tagStatus=UNTAGGED" --query 'imageIds[*]' --output json )
+          aws ecr batch-delete-image --region $ECR_REGION --repository-name $ECR_REPOSITORY --image-ids "$IMAGES_TO_DELETE" || true
+
   update_lambda:
     needs: Build
     runs-on: ubuntu-latest
