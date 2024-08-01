@@ -1,4 +1,4 @@
-import { publish } from "./publish-topic";
+import { publish } from './actions/publish-topic';
 
 export async function handler(event) {
     console.log("request:", JSON.stringify(event, undefined, 2));
