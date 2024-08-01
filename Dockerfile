@@ -1,7 +1,7 @@
 FROM public.ecr.aws/lambda/nodejs:20
 
 # Copy function code
-COPY lambda.js package.json libs/ actions/ ${LAMBDA_TASK_ROOT}
+COPY lambda.js publish-topic.js snsClient.js package.json ${LAMBDA_TASK_ROOT}
 
 RUN npm install
   

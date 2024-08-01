@@ -1,6 +1,6 @@
-const { publish } = require("./actions/publish-topic");
+import { publish } from "./publish-topic";
 
-exports.handler = async function(event) {
+export async function handler(event) {
     console.log("request:", JSON.stringify(event, undefined, 2));
     const dayOfMonth = new Date().getDate();
     console.log(dayOfMonth);
@@ -8,4 +8,4 @@ exports.handler = async function(event) {
     // if((dayOfMonth + 1) === 2 || (dayOfMonth + 1) === 4) {
       publish();
     // }
-  };
+  }

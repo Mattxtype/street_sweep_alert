@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 
 // snippet-start:[sns.JavaScript.topics.publishMessagesV3]
 import { PublishCommand } from "@aws-sdk/client-sns";
-import { snsClient } from "../libs/snsClient.js";
+import { snsClient } from "./snsClient.js";
 
 /**
  * @param {string | Record<string, any>} message - The message to send. Can be a plain string or an object
