@@ -3,17 +3,16 @@ import { PublishCommand } from "@aws-sdk/client-sns";
 export async function handler(event) {
    const snsClient = new SNSClient({});
 
-   const publish = async (
-    message = "STREET SWEEP",
-    topicArn = "streetSweepAlert",
-  ) => {
-    const response = await snsClient.send(
+   const response = await snsClient.send(
       new PublishCommand({
-        Message: message,
-        TopicArn: topicArn,
+        Message: "StreetSweepAlert",
+        TopicArn: "aws:sns:us-east-1:471112808940:streetSweepAlert",
       }),
     );
     console.log(response);
+
+  return {
+    'StatusCode': 200,
+    'body': response
   }
-  publish();
   }
