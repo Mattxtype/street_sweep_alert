@@ -3,7 +3,7 @@ import { PublishCommand } from "@aws-sdk/client-sns";
 export async function handler(event) {
    const snsClient = new SNSClient({});
 
-   async (
+   const publish = async (
     message = "STREET SWEEP",
     topicArn = "streetSweepAlert",
   ) => {
@@ -15,5 +15,5 @@ export async function handler(event) {
     );
     console.log(response);
   }
-
+  publish();
   }
