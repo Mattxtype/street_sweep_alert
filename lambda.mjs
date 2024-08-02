@@ -6,7 +6,7 @@ export async function handler(event) {
    const response = await snsClient.send(
       new PublishCommand({
         Message: "StreetSweepAlert",
-        TopicArn: "aws:sns:us-east-1:471112808940:streetSweepAlert",
+        TopicArn: "arn:aws:sns:us-east-1:471112808940:streetSweepAlert",
       }),
     );
     console.log(response);
